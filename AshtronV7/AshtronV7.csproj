@@ -14,7 +14,6 @@
     <PublishTrimmed>false</PublishTrimmed>
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
-    <ApplicationIcon>Resources\ashtron.ico</ApplicationIcon>
     <AssemblyName>ASHTRON_V7</AssemblyName>
     <RootNamespace>AshtronV7</RootNamespace>
     <AssemblyTitle>ASHTRON V7 — ULTRA FRAME ENGINE</AssemblyTitle>
@@ -32,10 +31,8 @@
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageReference Include="System.Management" Version="8.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\ashtron.ico" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
+    <PackageReference Include="System.Windows.Forms" Version="4.0.0" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -473,6 +474,11 @@ namespace AshtronV7.Services
             return _processService.GetAllProcesses()
                 .Where(p => p.Category == ProcessCategory.GamingRequired || p.Category == ProcessCategory.Communication)
                 .ToList();
+        }
+
+        public List<KnownBackgroundApp> GetDefaultBackgroundApps()
+        {
+            return _processService.GetDefaultBackgroundApps();
         }
 
         public List<SystemBackup> GetBackups() => _backupService.GetBackups();
