@@ -340,7 +340,7 @@ namespace AshtronV7.Services
             OnEngineEvent?.Invoke($"Switched to {newProfile} profile");
         }
 
-        private OptimizationProfile CreateProfile(EngineProfile profileType, HardwareInfo hardware)
+        public OptimizationProfile CreateProfile(EngineProfile profileType, HardwareInfo hardware)
         {
             var baseProfile = CreateOptimalProfile(hardware);
             

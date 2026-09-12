@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -24,7 +25,9 @@ namespace AshtronV7.ViewModels
         private OptimizationProfile _currentProfile;
         private ObservableCollection<string> _activityLog = new();
         private ObservableCollection<ProcessInfo> _focusedProcesses = new();
-
+        private ObservableCollection<OptimizationProfile> _availableProfiles = new();
+        private ObservableCollection<FocusLevel> _focusLevels = new();
+        private ObservableCollection<KnownBackgroundApp> _knownBackgroundApps = new();
         private string _selectedTab = "Home";
 
         public EngineState EngineState
@@ -70,7 +73,11 @@ namespace AshtronV7.ViewModels
         public OptimizationProfile CurrentProfile
         {
             get => _currentProfile;
-            set => SetProperty(ref _currentProfile, value);
+            set
+            {
+                SetProperty(ref _currentProfile, value);
+                UpdateAvailableProfiles();
+            }
         }
 
         public ObservableCollection<string> ActivityLog
@@ -85,6 +92,26 @@ namespace AshtronV7.ViewModels
             set => SetProperty(ref _focusedProcesses, value);
         }
 
+        public ObservableCollection<OptimizationProfile> AvailableProfiles
+        {
+            get => _availableProfiles;
+            set => SetProperty(ref _availableProfiles, value);
+        }
+
+        public ObservableCollection<FocusLevel> FocusLevels
+        {
+            get => _focusLevels;
+            set => SetProperty(ref _focusLevels, value);
+        }
+
+        public ObservableCollection<KnownBackgroundApp> KnownBackgroundApps
+        {
+            get => _knownBackgroundApps;
+            set => SetProperty(ref _knownBackgroundApps, value);
+        }
+
+        public UserSettings Settings => _settingsService.Settings;
+
         public string SelectedTab
         {
             get => _selectedTab;
@@ -96,6 +123,7 @@ namespace AshtronV7.ViewModels
         public ICommand RestoreWindowsCommand { get; }
         public ICommand MinimizeToTrayCommand { get; }
         public ICommand SwitchProfileCommand { get; }
+        public ICommand SwitchTabCommand { get; }
 
         public MainViewModel(EngineService engineService, LoggerService logger, SettingsService settingsService)
         {
@@ -108,13 +136,52 @@ namespace AshtronV7.ViewModels
             RestoreWindowsCommand = new RelayCommand(() => RestoreWindows(), () => true);
             MinimizeToTrayCommand = new RelayCommand(() => MinimizeToTray());
             SwitchProfileCommand = new RelayCommand<string>(profile => SwitchProfile(profile));
+            SwitchTabCommand = new RelayCommand<string>(tab => SelectedTab = tab);
 
             _engineService.OnEngineStateChanged += state => Application.Current.Dispatcher.Invoke(() => EngineState = state);
             _engineService.OnMetricsUpdated += metrics => Application.Current.Dispatcher.Invoke(() => UpdateMetrics(metrics));
             _engineService.OnEngineEvent += msg => Application.Current.Dispatcher.Invoke(() => AddLog(msg));
             _engineService.OnError += msg => Application.Current.Dispatcher.Invoke(() => AddError(msg));
 
+            InitializeFocusLevels();
+            InitializeKnownBackgroundApps();
             InitializeAsync();
+        }
+
+        private void InitializeFocusLevels()
+        {
+            FocusLevels.Add(FocusLevel.Minimal);
+            FocusLevels.Add(FocusLevel.Competitive);
+            FocusLevels.Add(FocusLevel.Maximum);
+        }
+
+        private void InitializeKnownBackgroundApps()
+        {
+            var defaultApps = _engineService.GetDefaultBackgroundApps();
+            foreach (var app in defaultApps)
+            {
+                KnownBackgroundApps.Add(app);
+            }
+        }
+
+        private void UpdateAvailableProfiles()
+        {
+            AvailableProfiles.Clear();
+            var hardware = _engineService.Hardware;
+            var profiles = new[]
+            {
+                EngineProfile.UltraPeak,
+                EngineProfile.Competitive,
+                EngineProfile.Stable,
+                EngineProfile.SafeFallback
+            };
+
+            foreach (var p in profiles)
+            {
+                var profile = _engineService.CreateProfile(p, hardware);
+                profile.IsCurrent = p == _currentProfile?.Profile;
+                AvailableProfiles.Add(profile);
+            }
         }
 
         private async void InitializeAsync()
@@ -122,6 +189,7 @@ namespace AshtronV7.ViewModels
             await _engineService.InitializeAsync();
             HardwareInfo = _engineService.Hardware;
             CurrentProfile = _engineService.CurrentProfile;
+            UpdateAvailableProfiles();
             AddLog("ASHTRON V7 initialized");
             AddLog($"Hardware: {HardwareInfo.CpuModel}, {HardwareInfo.GpuModel}, {HardwareInfo.TotalRamBytes / (1024*1024*1024)}GB RAM");
             AddLog($"Detected MSI: {HardwareInfo.MsiVersion}");

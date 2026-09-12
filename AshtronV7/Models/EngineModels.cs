@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using AshtronV7.ViewModels;
 
 namespace AshtronV7.Models
 {
@@ -80,8 +81,9 @@ namespace AshtronV7.Models
         Unknown
     }
 
-    public class OptimizationProfile
+    public class OptimizationProfile : ViewModelBase
     {
+        private bool _isCurrent;
         public EngineProfile Profile { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -94,6 +96,11 @@ namespace AshtronV7.Models
         public bool EnableBackgroundRecordingDisable { get; set; }
         public int TimerResolutionMs { get; set; }
         public string PowerPlanGuid { get; set; }
+        public bool IsCurrent
+        {
+            get => _isCurrent;
+            set => SetProperty(ref _isCurrent, value);
+        }
     }
 
     public class SystemBackup
