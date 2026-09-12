@@ -1,0 +1,7 @@
+/workspace/23ad51f4-2844-4fc9-b072-73fdcbb6ef1b/sessions/agent_367dca4d-a3b0-47a2-8634-bb76e376d4f6/AshtronV7/obj/Release/net8.0-windows/win-x64/AshtronV7.csproj.AssemblyReference.cache
+/workspace/23ad51f4-2844-4fc9-b072-73fdcbb6ef1b/sessions/agent_367dca4d-a3b0-47a2-8634-bb76e376d4f6/AshtronV7/obj/Release/net8.0-windows/win-x64/Resources/Styles.baml
+/workspace/23ad51f4-2844-4fc9-b072-73fdcbb6ef1b/sessions/agent_367dca4d-a3b0-47a2-8634-bb76e376d4f6/AshtronV7/obj/Release/net8.0-windows/win-x64/Views/LoginWindow.g.cs
+/workspace/23ad51f4-2844-4fc9-b072-73fdcbb6ef1b/sessions/agent_367dca4d-a3b0-47a2-8634-bb76e376d4f6/AshtronV7/obj/Release/net8.0-windows/win-x64/App.g.cs
+/workspace/23ad51f4-2844-4fc9-b072-73fdcbb6ef1b/sessions/agent_367dca4d-a3b0-47a2-8634-bb76e376d4f6/AshtronV7/obj/Release/net8.0-windows/win-x64/GeneratedInternalTypeHelper.g.cs
+/workspace/23ad51f4-2844-4fc9-b072-73fdcbb6ef1b/sessions/agent_367dca4d-a3b0-47a2-8634-bb76e376d4f6/AshtronV7/obj/Release/net8.0-windows/win-x64/ASHTRON_V7_MarkupCompile.cache
+/workspace/23ad51f4-2844-4fc9-b072-73fdcbb6ef1b/sessions/agent_367dca4d-a3b0-47a2-8634-bb76e376d4f6/AshtronV7/obj/Release/net8.0-windows/win-x64/ASHTRON_V7_MarkupCompile.lref

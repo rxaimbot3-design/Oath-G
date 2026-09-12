@@ -146,7 +146,7 @@
                                            FontWeight="SemiBold"/>
                                 <TextBlock Text="{Binding CurrentMetrics.CurrentFps, StringFormat='{}{0:F1}'}" 
                                            FontSize="36" FontWeight="Bold" Foreground="{StaticResource AccentPrimaryBrush}" 
-                                           FontFamily="{StaticResource MonoFont}"/>
+                                           FontFamily="Consolas"/>
                                 <TextBlock Text="frames/sec" FontSize="10" Foreground="{StaticResource TextMutedBrush}"/>
                             </StackPanel>
                         </Border>
@@ -158,7 +158,7 @@
                                            FontWeight="SemiBold"/>
                                 <TextBlock Text="{Binding CurrentMetrics.AverageFps, StringFormat='{}{0:F1}'}" 
                                            FontSize="36" FontWeight="Bold" Foreground="{StaticResource AccentSecondaryBrush}" 
-                                           FontFamily="{StaticResource MonoFont}"/>
+                                           FontFamily="Consolas"/>
                                 <TextBlock Text="session avg" FontSize="10" Foreground="{StaticResource TextMutedBrush}"/>
                             </StackPanel>
                         </Border>
@@ -170,7 +170,7 @@
                                            FontWeight="SemiBold"/>
                                 <TextBlock Text="{Binding CurrentMetrics.OnePercentLowFps, StringFormat='{}{0:F1}'}" 
                                            FontSize="36" FontWeight="Bold" Foreground="{StaticResource AccentWarningBrush}" 
-                                           FontFamily="{StaticResource MonoFont}"/>
+                                           FontFamily="Consolas"/>
                                 <TextBlock Text="stability metric" FontSize="10" Foreground="{StaticResource TextMutedBrush}"/>
                             </StackPanel>
                         </Border>
@@ -182,7 +182,7 @@
                                            FontWeight="SemiBold"/>
                                 <TextBlock Text="{Binding CurrentMetrics.FrameTimeMs, StringFormat='{}{0:F1} ms'}" 
                                            FontSize="36" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" 
-                                           FontFamily="{StaticResource MonoFont}"/>
+                                           FontFamily="Consolas"/>
                                 <TextBlock Text="lower = better" FontSize="10" Foreground="{StaticResource TextMutedBrush}"/>
                             </StackPanel>
                         </Border>
@@ -209,7 +209,7 @@
                                                FontWeight="SemiBold" VerticalAlignment="Center"/>
                                     <TextBlock Grid.Column="2" Text="{Binding CurrentMetrics.CpuUsage, StringFormat='{}{0:F1}%'}" 
                                                FontSize="14" FontWeight="Bold" Foreground="{StaticResource AccentPrimaryBrush}" 
-                                               FontFamily="{StaticResource MonoFont}" VerticalAlignment="Center"/>
+                                               FontFamily="Consolas" VerticalAlignment="Center"/>
                                 </Grid>
                                 <ProgressBar Value="{Binding CurrentMetrics.CpuUsage}" Maximum="100" Style="{StaticResource MetricProgressBar}" Margin="0,8,0,0"/>
                                 <TextBlock Text="Ryzen 5 5600X • 6C/12T" FontSize="10" Foreground="{StaticResource TextMutedBrush}" Margin="0,6,0,0"/>
@@ -229,7 +229,7 @@
                                                FontWeight="SemiBold" VerticalAlignment="Center"/>
                                     <TextBlock Grid.Column="2" Text="{Binding CurrentMetrics.GpuUsage, StringFormat='{}{0:F1}%'}" 
                                                FontSize="14" FontWeight="Bold" Foreground="{StaticResource AccentSecondaryBrush}" 
-                                               FontFamily="{StaticResource MonoFont}" VerticalAlignment="Center"/>
+                                               FontFamily="Consolas" VerticalAlignment="Center"/>
                                 </Grid>
                                 <ProgressBar Value="{Binding CurrentMetrics.GpuUsage}" Maximum="100" Style="{StaticResource MetricProgressBar}" Margin="0,8,0,0"/>
                                 <TextBlock Text="GTX 1660 • 6GB GDDR5" FontSize="10" Foreground="{StaticResource TextMutedBrush}" Margin="0,6,0,0"/>
@@ -249,7 +249,7 @@
                                                FontWeight="SemiBold" VerticalAlignment="Center"/>
                                     <TextBlock Grid.Column="2" Text="{Binding CurrentMetrics.RamUsage, StringFormat='{}{0:F1}%'}" 
                                                FontSize="14" FontWeight="Bold" Foreground="{StaticResource AccentWarningBrush}" 
-                                               FontFamily="{StaticResource MonoFont}" VerticalAlignment="Center"/>
+                                               FontFamily="Consolas" VerticalAlignment="Center"/>
                                 </Grid>
                                 <ProgressBar Value="{Binding CurrentMetrics.RamUsage}" Maximum="100" Style="{StaticResource MetricProgressBar}" Margin="0,8,0,0"/>
                                 <TextBlock Text="DDR4 • 16GB+ Target" FontSize="10" Foreground="{StaticResource TextMutedBrush}" Margin="0,6,0,0"/>
@@ -271,7 +271,7 @@
                                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                     <Ellipse Width="10" Height="10" Fill="#FF5050" VerticalAlignment="Center" Margin="0,0,8,0" x:Name="MsiStatusDot"/>
                                     <TextBlock Text="NOT DETECTED" FontSize="14" FontWeight="Bold" Foreground="#FF5050" 
-                                               FontFamily="{StaticResource MonoFont}" x:Name="MsiStatusText" VerticalAlignment="Center"/>
+                                               FontFamily="Consolas" x:Name="MsiStatusText" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <TextBlock Text="Waiting for HD-Player.exe..." FontSize="10" Foreground="{StaticResource TextMutedBrush}" Margin="0,6,0,0"/>
                             </StackPanel>
@@ -284,7 +284,7 @@
                                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                     <Ellipse Width="10" Height="10" Fill="#FF5050" VerticalAlignment="Center" Margin="0,0,8,0" x:Name="DiscordStatusDot"/>
                                     <TextBlock Text="NOT RUNNING" FontSize="14" FontWeight="Bold" Foreground="#FF5050" 
-                                               FontFamily="{StaticResource MonoFont}" x:Name="DiscordStatusText" VerticalAlignment="Center"/>
+                                               FontFamily="Consolas" x:Name="DiscordStatusText" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <TextBlock Text="Voice chat preserved" FontSize="10" Foreground="{StaticResource TextMutedBrush}" Margin="0,6,0,0"/>
                             </StackPanel>
@@ -333,15 +333,15 @@
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
                                                 <TextBlock Grid.Column="1" Text="{Binding Profile}" FontSize="11" Foreground="{StaticResource AccentPrimaryBrush}" 
-                                                           FontWeight="Bold" FontFamily="{StaticResource MonoFont}" VerticalAlignment="Center" Margin="12,0,0,0"
+                                                           FontWeight="Bold" FontFamily="Consolas" VerticalAlignment="Center" Margin="12,0,0,0"
                                                            Visibility="{Binding IsCurrent, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                             </Grid>
                                             <TextBlock Text="{Binding Description}" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,4,0,0"/>
                                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                                 <TextBlock Text="Priority: " FontSize="10" Foreground="{StaticResource TextMutedBrush}"/>
-                                                <TextBlock Text="{Binding EmulatorPriority}" FontSize="10" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" FontFamily="{StaticResource MonoFont}"/>
+                                                <TextBlock Text="{Binding EmulatorPriority}" FontSize="10" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" FontFamily="Consolas"/>
                                                 <TextBlock Text="  |  Focus: " FontSize="10" Foreground="{StaticResource TextMutedBrush}" Margin="12,0,0,0"/>
-                                                <TextBlock Text="{Binding FocusLevel}" FontSize="10" FontWeight="Bold" Foreground="{StaticResource AccentSecondaryBrush}" FontFamily="{StaticResource MonoFont}"/>
+                                                <TextBlock Text="{Binding FocusLevel}" FontSize="10" FontWeight="Bold" Foreground="{StaticResource AccentSecondaryBrush}" FontFamily="Consolas"/>
                                             </StackPanel>
                                         </StackPanel>
                                         <Button Grid.Column="1" Content="APPLY" Style="{StaticResource SecondaryButtonStyle}" 
@@ -391,7 +391,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding ProcessorAffinity, StringFormat='0x{0:X}'}" 
-                                                       FontFamily="{StaticResource MonoFont}" FontSize="11"/>
+                                                       FontFamily="Consolas" FontSize="11"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -399,7 +399,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding CpuUsage, StringFormat='{0:F1}%'}" 
-                                                       FontFamily="{StaticResource MonoFont}" FontSize="11"/>
+                                                       FontFamily="Consolas" FontSize="11"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -407,7 +407,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding WorkingSetBytes, StringFormat='{0:F1} MB', Converter={StaticResource BytesToMBConverter}}" 
-                                                       FontFamily="{StaticResource MonoFont}" FontSize="11"/>
+                                                       FontFamily="Consolas" FontSize="11"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -440,7 +440,7 @@
                             <StackPanel>
                                 <TextBlock Text="SYSTEM PROCESSES" FontSize="10" Foreground="{StaticResource TextMutedBrush}" FontWeight="SemiBold"/>
                                 <TextBlock Text="{Binding CurrentMetrics.ProcessCount}" FontSize="32" FontWeight="Bold" 
-                                           Foreground="{StaticResource TextPrimaryBrush}" FontFamily="{StaticResource MonoFont}"/>
+                                           Foreground="{StaticResource TextPrimaryBrush}" FontFamily="Consolas"/>
                                 <TextBlock Text="Total running" FontSize="10" Foreground="{StaticResource TextMutedBrush}"/>
                             </StackPanel>
                         </Border>
@@ -449,7 +449,7 @@
                             <StackPanel>
                                 <TextBlock Text="USER BACKGROUND" FontSize="10" Foreground="{StaticResource TextMutedBrush}" FontWeight="SemiBold"/>
                                 <TextBlock Text="{Binding CurrentMetrics.UserBackgroundProcesses}" FontSize="32" FontWeight="Bold" 
-                                           Foreground="{StaticResource AccentWarningBrush}" FontFamily="{StaticResource MonoFont}"/>
+                                           Foreground="{StaticResource AccentWarningBrush}" FontFamily="Consolas"/>
                                 <TextBlock Text="Target: 60-70" FontSize="10" Foreground="{StaticResource TextMutedBrush}"/>
                             </StackPanel>
                         </Border>
@@ -458,7 +458,7 @@
                             <StackPanel>
                                 <TextBlock Text="RAM USAGE" FontSize="10" Foreground="{StaticResource TextMutedBrush}" FontWeight="SemiBold"/>
                                 <TextBlock Text="{Binding CurrentMetrics.RamUsedBytes, Converter={StaticResource BytesToGBConverter}, StringFormat='{0:F1} GB'}" 
-                                           FontSize="32" FontWeight="Bold" Foreground="{StaticResource AccentSecondaryBrush}" FontFamily="{StaticResource MonoFont}"/>
+                                           FontSize="32" FontWeight="Bold" Foreground="{StaticResource AccentSecondaryBrush}" FontFamily="Consolas"/>
                                 <TextBlock Text="{Binding CurrentMetrics.RamUsage, StringFormat='{0:F1}% used'}" FontSize="10" Foreground="{StaticResource TextMutedBrush}"/>
                             </StackPanel>
                         </Border>
@@ -499,7 +499,7 @@
                                                 <CheckBox IsChecked="{Binding IsEnabled}" VerticalAlignment="Center" Margin="0,0,12,0"/>
                                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                                     <TextBlock Text="{Binding DisplayName}" FontSize="12" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                                    <TextBlock Text="{Binding ProcessName}" FontSize="10" Foreground="{StaticResource TextMutedBrush}" FontFamily="{StaticResource MonoFont}"/>
+                                                    <TextBlock Text="{Binding ProcessName}" FontSize="10" Foreground="{StaticResource TextMutedBrush}" FontFamily="Consolas"/>
                                                 </StackPanel>
                                             </Grid>
                                         </Border>
@@ -527,7 +527,7 @@
 
                     <ListView ItemsSource="{Binding ActivityLog}" Style="{StaticResource ProcessListViewStyle}" 
                               BorderBrush="{StaticResource BorderSubtleBrush}" BorderThickness="1" Height="600"
-                              FontFamily="{StaticResource MonoFont}" FontSize="11">
+                              FontFamily="Consolas" FontSize="11">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding}" Foreground="{StaticResource TextSecondaryBrush}"/>
