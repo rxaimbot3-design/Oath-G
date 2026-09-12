@@ -13,6 +13,7 @@
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <PublishTrimmed>false</PublishTrimmed>
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <ApplicationIcon>Resources\ashtron.ico</ApplicationIcon>
     <AssemblyName>ASHTRON_V7</AssemblyName>
     <RootNamespace>AshtronV7</RootNamespace>

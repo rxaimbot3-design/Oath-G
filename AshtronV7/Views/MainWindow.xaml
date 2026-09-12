@@ -24,6 +24,10 @@
             <local:EngineStateToVisibilityConverter x:Key="EngineStateToVisibilityConverter"/>
             <local:ProcessCategoryToColorConverter x:Key="ProcessCategoryToColorConverter"/>
             <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <local:TabVisibilityConverter x:Key="TabVisibilityConverter"/>
+            <local:StringEqualityConverter x:Key="StringEqualityConverter"/>
+            <local:BytesToMBConverter x:Key="BytesToMBConverter"/>
+            <local:BytesToGBConverter x:Key="BytesToGBConverter"/>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -53,7 +57,7 @@
                     <StackPanel>
                         <TextBlock Text="ASHTRON V7" FontSize="16" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}"/>
                         <TextBlock Text="ULTRA FRAME ENGINE" FontSize="9" Foreground="{StaticResource AccentPrimaryBrush}" 
-                                   FontWeight="Medium" LetterSpacing="1"/>
+                                   FontWeight="Medium"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -93,7 +97,7 @@
         <!-- Main Content -->
         <Grid Grid.Row="1">
             <!-- HOME TAB -->
-            <ScrollViewer x:Name="HomeTab" Visibility="{Binding SelectedTab, Converter={StaticResource StringEqualityConverter}, ConverterParameter=Home, ConverterParameter2=Visibility}" 
+            <ScrollViewer x:Name="HomeTab" Visibility="{Binding SelectedTab, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Home}" 
                           Style="{StaticResource DarkScrollViewer}" VerticalScrollBarVisibility="Auto">
                 <StackPanel Margin="24,16,24,24">
                     <!-- Engine Status Banner -->
@@ -139,7 +143,7 @@
                         <Border Grid.Column="0" Style="{StaticResource MetricCardStyle}" Margin="0,0,8,8">
                             <StackPanel>
                                 <TextBlock Text="CURRENT FPS" FontSize="10" Foreground="{StaticResource TextMutedBrush}" 
-                                           FontWeight="SemiBold" LetterSpacing="0.5"/>
+                                           FontWeight="SemiBold"/>
                                 <TextBlock Text="{Binding CurrentMetrics.CurrentFps, StringFormat='{}{0:F1}'}" 
                                            FontSize="36" FontWeight="Bold" Foreground="{StaticResource AccentPrimaryBrush}" 
                                            FontFamily="{StaticResource MonoFont}"/>
@@ -151,7 +155,7 @@
                         <Border Grid.Column="1" Style="{StaticResource MetricCardStyle}" Margin="4,0,4,8">
                             <StackPanel>
                                 <TextBlock Text="AVERAGE FPS" FontSize="10" Foreground="{StaticResource TextMutedBrush}" 
-                                           FontWeight="SemiBold" LetterSpacing="0.5"/>
+                                           FontWeight="SemiBold"/>
                                 <TextBlock Text="{Binding CurrentMetrics.AverageFps, StringFormat='{}{0:F1}'}" 
                                            FontSize="36" FontWeight="Bold" Foreground="{StaticResource AccentSecondaryBrush}" 
                                            FontFamily="{StaticResource MonoFont}"/>
@@ -163,7 +167,7 @@
                         <Border Grid.Column="2" Style="{StaticResource MetricCardStyle}" Margin="4,0,4,8">
                             <StackPanel>
                                 <TextBlock Text="1% LOW FPS" FontSize="10" Foreground="{StaticResource TextMutedBrush}" 
-                                           FontWeight="SemiBold" LetterSpacing="0.5"/>
+                                           FontWeight="SemiBold"/>
                                 <TextBlock Text="{Binding CurrentMetrics.OnePercentLowFps, StringFormat='{}{0:F1}'}" 
                                            FontSize="36" FontWeight="Bold" Foreground="{StaticResource AccentWarningBrush}" 
                                            FontFamily="{StaticResource MonoFont}"/>
@@ -175,7 +179,7 @@
                         <Border Grid.Column="3" Style="{StaticResource MetricCardStyle}" Margin="8,0,0,8">
                             <StackPanel>
                                 <TextBlock Text="FRAME TIME" FontSize="10" Foreground="{StaticResource TextMutedBrush}" 
-                                           FontWeight="SemiBold" LetterSpacing="0.5"/>
+                                           FontWeight="SemiBold"/>
                                 <TextBlock Text="{Binding CurrentMetrics.FrameTimeMs, StringFormat='{}{0:F1} ms'}" 
                                            FontSize="36" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" 
                                            FontFamily="{StaticResource MonoFont}"/>
@@ -263,7 +267,7 @@
                         <Border Grid.Column="0" Style="{StaticResource MetricCardStyle}" Margin="0,0,8,0">
                             <StackPanel>
                                 <TextBlock Text="MSI APP PLAYER" FontSize="10" Foreground="{StaticResource TextMutedBrush}" 
-                                           FontWeight="SemiBold" LetterSpacing="0.5"/>
+                                           FontWeight="SemiBold"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                     <Ellipse Width="10" Height="10" Fill="#FF5050" VerticalAlignment="Center" Margin="0,0,8,0" x:Name="MsiStatusDot"/>
                                     <TextBlock Text="NOT DETECTED" FontSize="14" FontWeight="Bold" Foreground="#FF5050" 
@@ -276,7 +280,7 @@
                         <Border Grid.Column="1" Style="{StaticResource MetricCardStyle}" Margin="8,0,0,0">
                             <StackPanel>
                                 <TextBlock Text="DISCORD" FontSize="10" Foreground="{StaticResource TextMutedBrush}" 
-                                           FontWeight="SemiBold" LetterSpacing="0.5"/>
+                                           FontWeight="SemiBold"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                     <Ellipse Width="10" Height="10" Fill="#FF5050" VerticalAlignment="Center" Margin="0,0,8,0" x:Name="DiscordStatusDot"/>
                                     <TextBlock Text="NOT RUNNING" FontSize="14" FontWeight="Bold" Foreground="#FF5050" 
@@ -291,7 +295,7 @@
                     <Border Style="{StaticResource MetricCardStyle}" Margin="0,16,0,0">
                         <StackPanel>
                             <TextBlock Text="ACTIVE PROFILE" FontSize="10" Foreground="{StaticResource TextMutedBrush}" 
-                                       FontWeight="SemiBold" LetterSpacing="0.5"/>
+                                       FontWeight="SemiBold"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <TextBlock Text="{Binding CurrentProfile.Name}" FontSize="16" FontWeight="Bold" 
                                            Foreground="{StaticResource AccentPrimaryBrush}"/>
@@ -306,7 +310,7 @@
             </ScrollViewer>
 
             <!-- ENGINE TAB -->
-            <ScrollViewer x:Name="EngineTab" Visibility="{Binding SelectedTab, Converter={StaticResource StringEqualityConverter}, ConverterParameter=Engine, ConverterParameter2=Visibility}" 
+            <ScrollViewer x:Name="EngineTab" Visibility="{Binding SelectedTab, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Engine}" 
                           Style="{StaticResource DarkScrollViewer}" VerticalScrollBarVisibility="Auto">
                 <StackPanel Margin="24,16,24,24">
                     <TextBlock Text="ENGINE PROFILES" FontSize="18" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,16"/>
@@ -369,7 +373,7 @@
             </ScrollViewer>
 
             <!-- FOCUS TAB -->
-            <ScrollViewer x:Name="FocusTab" Visibility="{Binding SelectedTab, Converter={StaticResource StringEqualityConverter}, ConverterParameter=Focus, ConverterParameter2=Visibility}" 
+            <ScrollViewer x:Name="FocusTab" Visibility="{Binding SelectedTab, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Focus}" 
                           Style="{StaticResource DarkScrollViewer}" VerticalScrollBarVisibility="Auto">
                 <StackPanel Margin="24,16,24,24">
                     <TextBlock Text="PROCESS PRIORITY FOCUS" FontSize="18" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,16"/>
@@ -422,7 +426,7 @@
             </ScrollViewer>
 
             <!-- BACKGROUND TAB -->
-            <ScrollViewer x:Name="BackgroundTab" Visibility="{Binding SelectedTab, Converter={StaticResource StringEqualityConverter}, ConverterParameter=Background, ConverterParameter2=Visibility}" 
+            <ScrollViewer x:Name="BackgroundTab" Visibility="{Binding SelectedTab, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Background}" 
                           Style="{StaticResource DarkScrollViewer}" VerticalScrollBarVisibility="Auto">
                 <StackPanel Margin="24,16,24,24">
                     <Grid>
@@ -508,7 +512,7 @@
             </ScrollViewer>
 
             <!-- LOGS TAB -->
-            <ScrollViewer x:Name="LogsTab" Visibility="{Binding SelectedTab, Converter={StaticResource StringEqualityConverter}, ConverterParameter=Logs, ConverterParameter2=Visibility}" 
+            <ScrollViewer x:Name="LogsTab" Visibility="{Binding SelectedTab, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Logs}" 
                           Style="{StaticResource DarkScrollViewer}" VerticalScrollBarVisibility="Auto">
                 <StackPanel Margin="24,16,24,24">
                     <Grid>
