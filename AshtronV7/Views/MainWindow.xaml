@@ -307,6 +307,9 @@
                     <TextBlock Text="ENGINE PROFILES" FontSize="18" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,16"/>
 
                     <ItemsControl ItemsSource="{Binding AvailableProfiles}">
+                        <ItemsControl.Resources>
+                            <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+                        </ItemsControl.Resources>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border Style="{StaticResource MetricCardStyle}" Margin="0,0,0,12" Padding="20">
@@ -373,6 +376,10 @@
 
                     <ListView ItemsSource="{Binding FocusedProcesses}" Style="{StaticResource ProcessListViewStyle}" 
                               BorderBrush="{StaticResource BorderSubtleBrush}" BorderThickness="1" Height="300">
+                        <ListView.Resources>
+                            <local:BytesToMBConverter x:Key="BytesToMBConverter"/>
+                            <local:ProcessCategoryToColorConverter x:Key="ProcessCategoryToColorConverter"/>
+                        </ListView.Resources>
                         <ListView.View>
                             <GridView ColumnHeaderContainerStyle="{StaticResource ProcessGridViewColumnHeader}">
                                 <GridViewColumn Header="PROCESS" Width="160" DisplayMemberBinding="{Binding ProcessName}"/>
