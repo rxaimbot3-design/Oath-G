@@ -19,6 +19,15 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <local:BytesToMBConverter x:Key="BytesToMBConverter"/>
+            <local:BytesToGBConverter x:Key="BytesToGBConverter"/>
+            <local:ProcessCategoryToColorConverter x:Key="ProcessCategoryToColorConverter"/>
+            <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <local:EngineStateToVisibilityConverter x:Key="EngineStateToVisibilityConverter"/>
+            <local:ProcessCategoryToColorConverter x:Key="ProcessCategoryToColorConverter"/>
+            <local:TabVisibilityConverter x:Key="TabVisibilityConverter"/>
+            <local:StringEqualityConverter x:Key="StringEqualityConverter"/>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -307,6 +316,9 @@
                     <TextBlock Text="ENGINE PROFILES" FontSize="18" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,16"/>
 
                     <ItemsControl ItemsSource="{Binding AvailableProfiles}">
+                        <ItemsControl.Resources>
+                            <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+                        </ItemsControl.Resources>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border Style="{StaticResource MetricCardStyle}" Margin="0,0,0,12" Padding="20">
@@ -373,6 +385,10 @@
 
                     <ListView ItemsSource="{Binding FocusedProcesses}" Style="{StaticResource ProcessListViewStyle}" 
                               BorderBrush="{StaticResource BorderSubtleBrush}" BorderThickness="1" Height="300">
+                        <ListView.Resources>
+                            <local:BytesToMBConverter x:Key="BytesToMBConverter"/>
+                            <local:ProcessCategoryToColorConverter x:Key="ProcessCategoryToColorConverter"/>
+                        </ListView.Resources>
                         <ListView.View>
                             <GridView ColumnHeaderContainerStyle="{StaticResource ProcessGridViewColumnHeader}">
                                 <GridViewColumn Header="PROCESS" Width="160" DisplayMemberBinding="{Binding ProcessName}"/>
