@@ -19,6 +19,15 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <local:BytesToMBConverter x:Key="BytesToMBConverter"/>
+            <local:BytesToGBConverter x:Key="BytesToGBConverter"/>
+            <local:ProcessCategoryToColorConverter x:Key="ProcessCategoryToColorConverter"/>
+            <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <local:EngineStateToVisibilityConverter x:Key="EngineStateToVisibilityConverter"/>
+            <local:ProcessCategoryToColorConverter x:Key="ProcessCategoryToColorConverter"/>
+            <local:TabVisibilityConverter x:Key="TabVisibilityConverter"/>
+            <local:StringEqualityConverter x:Key="StringEqualityConverter"/>
         </ResourceDictionary>
     </Window.Resources>
 
