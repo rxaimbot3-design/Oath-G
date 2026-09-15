@@ -25,7 +25,6 @@
             <local:ProcessCategoryToColorConverter x:Key="ProcessCategoryToColorConverter"/>
             <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
             <local:EngineStateToVisibilityConverter x:Key="EngineStateToVisibilityConverter"/>
-            <local:ProcessCategoryToColorConverter x:Key="ProcessCategoryToColorConverter"/>
             <local:TabVisibilityConverter x:Key="TabVisibilityConverter"/>
             <local:StringEqualityConverter x:Key="StringEqualityConverter"/>
         </ResourceDictionary>
@@ -405,7 +404,7 @@
                                 <GridViewColumn Header="CPU %" Width="80">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding CpuUsage, StringFormat='{0:F1}%'}" 
+                                            <TextBlock Text="{Binding CpuUsage, StringFormat='{}{0:F1}%'}"
                                                        FontFamily="Consolas" FontSize="11"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
@@ -413,7 +412,7 @@
                                 <GridViewColumn Header="RAM" Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding WorkingSetBytes, StringFormat='{0:F1} MB', Converter={StaticResource BytesToMBConverter}}" 
+                                            <TextBlock Text="{Binding WorkingSetBytes, StringFormat='{}{0:F1} MB', Converter={StaticResource BytesToMBConverter}}"
                                                        FontFamily="Consolas" FontSize="11"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
@@ -464,9 +463,9 @@
                         <Border Grid.Column="2" Style="{StaticResource MetricCardStyle}" Margin="8,0,0,0">
                             <StackPanel>
                                 <TextBlock Text="RAM USAGE" FontSize="10" Foreground="{StaticResource TextMutedBrush}" FontWeight="SemiBold"/>
-                                <TextBlock Text="{Binding CurrentMetrics.RamUsedBytes, Converter={StaticResource BytesToGBConverter}, StringFormat='{0:F1} GB'}" 
+                                <TextBlock Text="{Binding CurrentMetrics.RamUsedBytes, Converter={StaticResource BytesToGBConverter}, StringFormat='{}{0:F1} GB'}"
                                            FontSize="32" FontWeight="Bold" Foreground="{StaticResource AccentSecondaryBrush}" FontFamily="Consolas"/>
-                                <TextBlock Text="{Binding CurrentMetrics.RamUsage, StringFormat='{0:F1}% used'}" FontSize="10" Foreground="{StaticResource TextMutedBrush}"/>
+                                <TextBlock Text="{Binding CurrentMetrics.RamUsage, StringFormat='{}{0:F1}% used'}" FontSize="10" Foreground="{StaticResource TextMutedBrush}"/>
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -513,7 +512,7 @@
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                        </Border>
+                        </StackPanel>
                     </Border>
                 </StackPanel>
             </ScrollViewer>
