@@ -184,7 +184,7 @@ namespace AshtronV7.ViewModels
             }
         }
 
-        private async void InitializeAsync()
+        public async void InitializeAsync()
         {
             await _engineService.InitializeAsync();
             HardwareInfo = _engineService.Hardware;
@@ -240,7 +240,7 @@ namespace AshtronV7.ViewModels
             }
         }
 
-        private void StopEngine()
+        public void StopEngine()
         {
             AddLog("Stopping engine...");
             _engineService.StopEngine();

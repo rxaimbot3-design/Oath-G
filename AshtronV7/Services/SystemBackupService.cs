@@ -274,11 +274,11 @@ namespace AshtronV7.Services
                         var original = JsonSerializer.Deserialize<dynamic>(backup.OriginalValue.ToString());
                         if (original != null)
                         {
-                            if (Enum.TryParse<ProcessPriorityClass>(original.Priority.ToString(), out var priority))
+                            if (Enum.TryParse<ProcessPriorityClass>(original.Priority.ToString(), out ProcessPriorityClass priority))
                             {
                                 proc.PriorityClass = priority;
                             }
-                            if (IntPtr.TryParse(original.Affinity.ToString(), out var affinity))
+                            if (IntPtr.TryParse(original.Affinity.ToString(), out IntPtr affinity))
                             {
                                 proc.ProcessorAffinity = affinity;
                             }

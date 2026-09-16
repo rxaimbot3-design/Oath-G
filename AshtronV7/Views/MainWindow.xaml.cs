@@ -8,15 +8,17 @@ namespace AshtronV7.Views
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(EngineService engineService, LoggerService logger)
         {
             InitializeComponent();
-            var logger = LoggerService.Instance;
             var settingsService = new SettingsService(logger);
-            var engineService = new EngineService(logger);
             DataContext = new MainViewModel(engineService, logger, settingsService);
             
             Loaded += MainWindow_Loaded;
+        }
+
+        public MainWindow() : this(new EngineService(LoggerService.Instance), LoggerService.Instance)
+        {
         }
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)

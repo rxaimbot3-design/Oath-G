@@ -33,7 +33,7 @@ namespace AshtronV7.Services
 
             _contextMenu.Items.Add(new ToolStripSeparator());
 
-            var engineStatusItem = new ToolStripMenuItem("Engine: Stopped", null, null) { Enabled = false, Name = "EngineStatus" };
+            var engineStatusItem = new ToolStripMenuItem("Engine: Stopped") { Enabled = false, Name = "EngineStatus" };
             _contextMenu.Items.Add(engineStatusItem);
 
             var startEngineItem = new ToolStripMenuItem("Start Competitive Engine", null, async (s, e) => await StartEngineAsync());
